@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-test:
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
+        node-version:
+          - 22.11.0
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm typecheck
+      - run: pnpm test
+      - run: pnpm build
+
+  publish-alpha:
+    needs: build-test
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref_name == 'main'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.11.0
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm version 0.0.0-alpha.${{ github.sha}} --no-git-tag-version
+      - run: pnpm publish --tag alpha
