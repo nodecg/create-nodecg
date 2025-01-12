@@ -36,6 +36,7 @@ jobs:
     if: github.event_name == 'push' && github.ref_name == 'main'
     steps:
       - uses: actions/checkout@v4
+      - run: corepack enable
       - uses: actions/setup-node@v4
         with:
           node-version: 22.11.0
@@ -43,3 +44,5 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm version 0.0.0-alpha.${{ github.sha}} --no-git-tag-version
       - run: pnpm publish --tag alpha
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
