@@ -3,7 +3,9 @@
 	"version": "0.0.0-alpha.2",
 	"license": "MIT",
 	"type": "module",
-	"bin": "./dist/bin.js",
+	"bin": {
+		"create-nodecg": "dist/bin.js"
+	},
 	"files": [
 		"dist",
 		"templates"
