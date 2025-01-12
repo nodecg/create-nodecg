@@ -16,7 +16,7 @@ jobs:
           - ubuntu-latest
           - windows-latest
         node-version:
-          - "22.11.0"
+          - 22.11.0
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
@@ -41,6 +41,7 @@ jobs:
         with:
           node-version: 22.11.0
           cache: pnpm
+          registry-url: https://registry.npmjs.org
       - run: pnpm install --frozen-lockfile
       - run: pnpm version 0.0.0-alpha.${{ github.sha}} --no-git-tag-version
       - run: pnpm publish --tag alpha --no-git-checks
