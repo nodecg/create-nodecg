@@ -43,6 +43,6 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm version 0.0.0-alpha.${{ github.sha}} --no-git-tag-version
-      - run: pnpm publish --tag alpha
+      - run: pnpm publish --tag alpha --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
