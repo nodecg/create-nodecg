@@ -3,7 +3,8 @@ import { mkdtemp, rm } from "node:fs/promises";
 import { EOL, tmpdir } from "node:os";
 import { join, sep } from "node:path";
 import type { Readable } from "node:stream";
-import { afterEach, beforeEach, test } from "node:test";
+
+import { afterEach, beforeEach, test } from "vitest";
 
 const runBin = () => {
 	const { stdin, stdout, stderr } = execFile("node", [
@@ -57,8 +58,6 @@ afterEach(async () => {
 
 test("correct", async () => {
 	const { stdout, stdin } = runBin();
-	await waitForLine(stdout, "project name");
-	stdin.write("test" + EOL);
-	await waitForLine(stdout, "git repo");
-	stdin.write("Y" + EOL);
+	await waitForLine(stdout, "template");
+	stdin.write(EOL);
 });

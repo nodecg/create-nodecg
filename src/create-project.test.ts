@@ -1,9 +1,9 @@
-import assert from "node:assert/strict";
 import { existsSync } from "node:fs";
 import { mkdtemp, readdir, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { sep } from "node:path";
-import test, { afterEach, beforeEach } from "node:test";
+
+import { afterEach, beforeEach, expect, test } from "vitest";
 
 import { createProject } from "./create-project.ts";
 
@@ -20,12 +20,12 @@ afterEach(async () => {
 
 test("correct", async () => {
 	const targetDir = await createProject("foo");
-	assert.ok(existsSync(targetDir));
-	assert.ok((await readdir(dir)).includes("foo"));
+	expect(existsSync(targetDir)).toBe(true);
+	expect(await readdir(dir)).toContain("foo");
 });
 
 test("does not throw if subdirectory is specified", async () => {
 	const targetDir = await createProject("foo/bar");
-	assert.ok(existsSync(targetDir));
-	assert.ok((await readdir(dir)).includes("foo"));
+	expect(existsSync(targetDir)).toBe(true);
+	expect(await readdir(dir)).toContain("foo");
 });

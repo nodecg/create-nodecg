@@ -12,9 +12,7 @@ export default tseslint.config(
 	{
 		languageOptions: {
 			parserOptions: {
-				projectService: {
-					allowDefaultProject: ["./eslint.config.js"],
-				},
+				projectService: true,
 				tsconfigRootDir: import.meta.dirname,
 			},
 		},
@@ -49,4 +47,5 @@ export default tseslint.config(
 		},
 	},
 	prettier,
+	{ ignores: ["**/*.js"] },
 );

@@ -3,15 +3,15 @@
 	"version": "0.0.0-alpha.0",
 	"license": "MIT",
 	"type": "module",
-	"bin": "./bin.ts",
+	"bin": "./dist/bin.ts",
 	"files": [
-		"*.ts",
-		"!*.test.ts",
+		"dist",
 		"templates"
 	],
 	"scripts": {
-		"test": "node --test --experimental-strip-types",
-		"test-watch": "node --test --watch --experimental-strip-types"
+		"build": "tsup",
+		"prepublishOnly": "npm run build",
+		"test": "vitest"
 	},
 	"dependencies": {
 		"@inquirer/prompts": "^7.2.1",
@@ -30,10 +30,21 @@
 		"eslint-plugin-simple-import-sort": "^12.1.1",
 		"execa": "^9.5.2",
 		"prettier": "^3.4.2",
+		"tsup": "^8.3.5",
 		"typescript": "~5.7.3",
-		"typescript-eslint": "^8.19.1"
+		"typescript-eslint": "^8.19.1",
+		"vitest": "^2.1.8"
 	},
 	"engines": {
 		"node": "^22.11.0"
+	},
+	"tsup": {
+		"entry": [
+			"src/bin.ts"
+		],
+		"sourcemap": true,
+		"target": "node22",
+		"format": "esm",
+		"clean": true
 	}
 }

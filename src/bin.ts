@@ -1,4 +1,4 @@
-#! /usr/bin/env node --experimental-strip-types
+#! /usr/bin/env node
 
 import { cp, readdir, rename, stat } from "node:fs/promises";
 import { isAbsolute, join, sep } from "node:path";
@@ -66,7 +66,7 @@ const packageManager = await select<"npm" | "yarn" | "pnpm" | "others">({
 const projectPath = await createProject(projectName);
 
 await cp(
-	join(import.meta.dirname, "templates", templateDir),
+	join(import.meta.dirname, "../templates", templateDir),
 	projectPath + sep,
 	{ recursive: true },
 );

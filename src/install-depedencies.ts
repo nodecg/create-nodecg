@@ -8,17 +8,20 @@ export async function installDependencies(
 ) {
 	switch (packageManager) {
 		case "npm": {
-			await spawn("npm", ["install"], { cwd });
+			await spawn("npm", ["install"], { cwd, stdio: "inherit" });
 			break;
 		}
 		case "yarn": {
-			await spawn("yarn", ["set", "version", "stable"], { cwd });
+			await spawn("yarn", ["set", "version", "stable"], {
+				cwd,
+				stdio: "inherit",
+			});
 			await appendFile(`${cwd}/.yarnrc.yml`, "nodeLinker: node-modules\n"); // https://yarnpkg.com/features/linkers
-			await spawn("yarn", ["install"], { cwd });
+			await spawn("yarn", ["install"], { cwd, stdio: "inherit" });
 			break;
 		}
 		case "pnpm": {
-			await spawn("pnpm", ["install"], { cwd });
+			await spawn("pnpm", ["install"], { cwd, stdio: "inherit" });
 			break;
 		}
 	}

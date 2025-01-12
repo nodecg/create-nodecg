@@ -2,16 +2,13 @@
 	"compilerOptions": {
 		"incremental": true,
 
-		"target": "ES2024",
-		"lib": ["ES2024"],
+		"target": "ESNext",
+		"lib": ["ESNext"],
 
 		"module": "Node16",
 		"types": ["node"],
+
 		"allowImportingTsExtensions": true,
-
-		"noEmit": true,
-
-		"checkJs": true,
 		"isolatedModules": true,
 		"verbatimModuleSyntax": true,
 		"forceConsistentCasingInFileNames": true,
@@ -25,6 +22,7 @@
 		"noImplicitOverride": true,
 		"noPropertyAccessFromIndexSignature": true,
 
-		"skipLibCheck": true
+		"skipLibCheck": true,
+		"noEmit": true
 	}
 }
