@@ -15,7 +15,9 @@ beforeEach(async () => {
 });
 
 afterEach(async () => {
-	await rm(dir, { recursive: true });
+	await rm(dir, { recursive: true }).catch((error: unknown) => {
+		console.error(error);
+	});
 });
 
 test("correct", async () => {
