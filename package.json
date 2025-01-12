@@ -1,12 +1,24 @@
 {
 	"name": "create-nodecg",
-	"version": "0.0.0",
+	"version": "0.0.0-alpha.0",
 	"license": "MIT",
 	"type": "module",
 	"bin": "./bin.ts",
+	"files": [
+		"*.ts",
+		"!*.test.ts",
+		"templates"
+	],
 	"scripts": {
 		"test": "node --test --experimental-strip-types",
 		"test-watch": "node --test --watch --experimental-strip-types"
+	},
+	"dependencies": {
+		"@inquirer/prompts": "^7.2.1",
+		"filenamify": "^6.0.0",
+		"nano-spawn": "^0.2.0",
+		"replace-in-file": "^8.3.0",
+		"validate-npm-package-name": "^6.0.0"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.18.0",
@@ -23,12 +35,5 @@
 	},
 	"engines": {
 		"node": "^22.11.0"
-	},
-	"dependencies": {
-		"@inquirer/prompts": "^7.2.1",
-		"filenamify": "^6.0.0",
-		"nano-spawn": "^0.2.0",
-		"replace-in-file": "^8.3.0",
-		"validate-npm-package-name": "^6.0.0"
 	}
 }
