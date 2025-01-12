@@ -90,7 +90,7 @@ const [nodecgVersion, typescriptVersion] = await Promise.all([
 await replaceInFile({
 	files: join(projectPath, "package.json"),
 	from: ["${NAME}", "${NODECG_VERSION}", "${TYPESCRIPT_VERSION}"],
-	to: [bundleName, "^" + nodecgVersion, "~" + typescriptVersion],
+	to: [bundleName, nodecgVersion, "~" + typescriptVersion],
 });
 
 if (packageManager !== "others") {
