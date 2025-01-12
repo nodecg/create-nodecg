@@ -1,0 +1,30 @@
+{
+	"compilerOptions": {
+		"incremental": true,
+
+		"target": "ES2024",
+		"lib": ["ES2024"],
+
+		"module": "Node16",
+		"types": ["node"],
+		"allowImportingTsExtensions": true,
+
+		"noEmit": true,
+
+		"checkJs": true,
+		"isolatedModules": true,
+		"verbatimModuleSyntax": true,
+		"forceConsistentCasingInFileNames": true,
+
+		"strict": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true,
+		"noUncheckedIndexedAccess": true,
+		"noImplicitOverride": true,
+		"noPropertyAccessFromIndexSignature": true,
+
+		"skipLibCheck": true
+	}
+}

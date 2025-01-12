@@ -1,0 +1,9 @@
+{
+	"name": "${NAME}",
+	"scripts": {
+		"start": "nodecg start"
+	},
+	"dependencies": {
+		"nodecg": "${NODECG_VERSION}"
+	}
+}

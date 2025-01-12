@@ -1,0 +1,12 @@
+{
+	"name": "${NAME}",
+	"scripts": {
+		"start": "nodecg start"
+	},
+	"dependencies": {
+		"nodecg": "${NODECG_VERSION}"
+	},
+	"devDependencies": {
+		"typescript": "${TYPESCRIPT_VERSION}"
+	}
+}
