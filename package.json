@@ -1,6 +1,11 @@
 {
 	"name": "create-nodecg",
 	"version": "0.0.0-alpha.4",
+	"keywords": [
+		"nodecg"
+	],
+	"homepage": "https://www.nodecg.dev/",
+	"repository": "https://github.com/nodecg/create-nodecg",
 	"license": "MIT",
 	"type": "module",
 	"bin": {
