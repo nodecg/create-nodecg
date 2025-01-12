@@ -84,7 +84,7 @@ await Promise.all(
 );
 
 const [nodecgVersion, typescriptVersion] = await Promise.all([
-	getLatestVersion("nodecg"),
+	getLatestVersion("nodecg", "pr796"),
 	getLatestVersion("typescript"),
 ]);
 await replaceInFile({
