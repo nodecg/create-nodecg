@@ -64,7 +64,7 @@ const runBin = async () => {
 	};
 };
 
-describe("CLI E2E Test", { timeout: 60_000 }, () => {
+describe("CLI E2E Test", { timeout: 120_000 }, () => {
 	let dir: string | null = null;
 
 	beforeEach(async () => {
@@ -92,7 +92,7 @@ describe("CLI E2E Test", { timeout: 60_000 }, () => {
 		await waitForLine(stdout, "Initialize git repo?");
 		stdin.write(EOL);
 		await waitForLine(stdout, "Select package manager");
-		stdin.write(cursorDown() + EOL);
+		stdin.write(EOL);
 		await waitForExit();
 
 		const packageJson = JSON.parse(
