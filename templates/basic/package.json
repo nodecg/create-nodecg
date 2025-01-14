@@ -5,5 +5,21 @@
 	},
 	"dependencies": {
 		"nodecg": "${NODECG_VERSION}"
+	},
+	"nodecg": {
+		"dashboardPanels": [
+			{
+				"name": "Panel",
+				"title": "Panel",
+				"file": "panel.html"
+			}
+		],
+		"graphics": [
+			{
+				"file": "main.html",
+				"width": 1920,
+				"height": 1080
+			}
+		]
 	}
 }
