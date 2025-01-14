@@ -4,7 +4,6 @@ import { join } from "node:path";
 import type { Readable } from "node:stream";
 import { afterEach } from "node:test";
 
-import { cursorDown } from "ansi-escapes";
 import spawn from "nano-spawn";
 import { beforeEach, describe, expect, test } from "vitest";
 
