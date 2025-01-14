@@ -2,13 +2,14 @@ import { appendFile } from "node:fs/promises";
 
 import spawn from "nano-spawn";
 
-export async function installDependencies(
-	packageManager: "npm" | "yarn" | "pnpm",
-	cwd: string,
-) {
+export async function installDependencies(packageManager: string, cwd: string) {
 	switch (packageManager) {
 		case "npm": {
 			await spawn("npm", ["install"], { cwd, stdio: "inherit" });
+			break;
+		}
+		case "pnpm": {
+			await spawn("pnpm", ["install"], { cwd, stdio: "inherit" });
 			break;
 		}
 		case "yarn": {
@@ -18,10 +19,6 @@ export async function installDependencies(
 			});
 			await appendFile(`${cwd}/.yarnrc.yml`, "nodeLinker: node-modules\n"); // https://yarnpkg.com/features/linkers
 			await spawn("yarn", ["install"], { cwd, stdio: "inherit" });
-			break;
-		}
-		case "pnpm": {
-			await spawn("pnpm", ["install"], { cwd, stdio: "inherit" });
 			break;
 		}
 	}

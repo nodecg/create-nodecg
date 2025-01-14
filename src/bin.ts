@@ -13,12 +13,12 @@ import { commitInitialFiles, initializeGit } from "./git.ts";
 import { installDependencies } from "./install-depedencies.ts";
 import { getLatestVersion } from "./npm.ts";
 
-const templateName = await select<"Basic" | "TypeScript">({
+const templateName = await select<string>({
 	message: "Select a template",
-	choices: ["Basic", "TypeScript"],
-	default: "TypeScript",
+	choices: ["Vanilla", "Parcel TypeScript"],
+	default: "Vanilla",
 });
-const templateDir = templateName.toLowerCase();
+const templateDir = templateName.toLowerCase().replace(/\s/g, "-");
 
 const projectName = await input({
 	message: "The new project name",
@@ -57,9 +57,9 @@ const bundleName = await input({
 
 const shouldInitializeGit = await confirm({ message: "Initialize git repo?" });
 
-const packageManager = await select<"npm" | "yarn" | "pnpm" | "others">({
+const packageManager = await select<string>({
 	message: "Select package manager",
-	choices: ["npm", "yarn", "pnpm", "others"],
+	choices: ["npm", "pnpm", "yarn", "others/skip"],
 	default: "npm",
 });
 
@@ -93,9 +93,7 @@ await replaceInFile({
 	to: [bundleName, nodecgVersion, "~" + typescriptVersion],
 });
 
-if (packageManager !== "others") {
-	await installDependencies(packageManager, projectPath);
-}
+await installDependencies(packageManager, projectPath);
 
 if (shouldInitializeGit) {
 	await initializeGit(projectPath);
