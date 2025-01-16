@@ -1,12 +1,17 @@
 {
 	"name": "${NAME}",
 	"scripts": {
-		"start": "nodecg start"
+		"start": "nodecg start",
+		"watch": "run-p watch:*",
+		"watch:dashboard": "parcel watch src/dashboard/panel.html --out-dir dashboard",
+		"watch:graphics": "parcel watch src/graphics/main.html --out-dir graphics",
+		"watch:extension": "parcel watch src/extension.ts --out-dir extension"
 	},
 	"dependencies": {
 		"nodecg": "${NODECG_VERSION}"
 	},
 	"devDependencies": {
+		"npm-run-all2": "^7.0.2",
 		"parcel": "^2.13.3",
 		"typescript": "${TYPESCRIPT_VERSION}"
 	}
